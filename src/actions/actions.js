@@ -1,0 +1,13 @@
+// export const SUCCESS = 'SUCCESS';
+
+export const ERROR = 'ERROR';
+export const LOADER = 'LOADER';
+
+
+export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
+export const CHOOSE_CATEGORY = 'CHOOSE_CATEGORY';
+export const CHOOSE_CATEGORY_ID = 'CHOOSE_CATEGORY_ID';
+export const SEARCH_MEAL = 'SEARCH_MEAL';
+export const SEARCH_ITEMS = 'SEARCH_ITEMS';
+export const ADD_FAVORITE_MEALS = 'ADD_FAVORITE_MEALS';
+export const DELETE_FAVORITE_MEALS = 'DELETE_FAVORITE_MEALS';

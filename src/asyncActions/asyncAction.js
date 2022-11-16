@@ -1,0 +1,3 @@
+const getAllCategories = () => {
+    return (dispatch)
+}

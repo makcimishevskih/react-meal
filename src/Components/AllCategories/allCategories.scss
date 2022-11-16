@@ -1,0 +1,14 @@
+.row {
+    margin-top: 40px !important;
+    margin-bottom: 40px;
+}
+
+
+.allCategories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    gap: 15px;
+}

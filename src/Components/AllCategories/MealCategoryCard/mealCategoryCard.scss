@@ -1,0 +1,53 @@
+.mealCard {
+    padding: 10px;
+    width: 280px;
+    min-height: 350px;
+
+    box-shadow: 0 0 3px black;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+}
+
+.card {
+    padding: 10px;
+    min-height: 350px;
+
+    &-image {
+        .card-title {
+            font-weight: 700;
+            font-size: 30px;
+            bottom: -20px !important;
+
+            &.card-title_white {
+                color: rgb(245, 245, 245) !important;
+
+                &:hover {
+                    color: darken(#f5f5f5, 10%);
+                }
+            }
+
+            &.card-title_black {
+                color: rgb(0, 0, 0) !important;
+
+                &:hover {
+                    color: darken(#000000, 10%);
+                }
+            }
+        }
+    }
+}
+
+.router-link {
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid rgb(90, 255, 90);
+    color: black;
+    margin: 5px;
+}
