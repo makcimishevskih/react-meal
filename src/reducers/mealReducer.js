@@ -1,4 +1,11 @@
-import { DELETE_FAVORITE_MEALS,ADD_FAVORITE_MEALS,SEARCH_ITEMS,GET_ALL_CATEGORIES,CHOOSE_CATEGORY,CHOOSE_CATEGORY_ID,SEARCH_MEAL,ERROR,LOADER } from "../actions/actions";
+import {
+    ADD_FAVORITE_MEALS,DELETE_FAVORITE_MEALS,
+    SEARCH_ITEMS,SEARCH_CATEGORIES,
+    GET_ALL_CATEGORIES,
+    CHOOSE_CATEGORY,CHOOSE_CATEGORY_ID,
+    LOADER,ERROR,
+    GET_RANDOM_MEAL
+} from "../actions/actions";
 
 const initialState = {
     allCategories: null,
@@ -9,6 +16,7 @@ const initialState = {
     searchMeal: '',
     searchItems: null,
     favoriteMeals: [],
+    randomMeal: {},
 };
 
 const mealReducer = (state = initialState,{ type,payload }) => {
@@ -29,7 +37,7 @@ const mealReducer = (state = initialState,{ type,payload }) => {
                 categoryId: payload
             }
 
-        case SEARCH_MEAL:
+        case SEARCH_CATEGORIES:
             return {
                 ...state,
                 searchMeal: payload
@@ -51,6 +59,11 @@ const mealReducer = (state = initialState,{ type,payload }) => {
                 favoriteMeals: state.favoriteMeals.filter(el => el.id !== payload),
             }
 
+        case GET_RANDOM_MEAL:
+            return {
+                ...state,
+                randomMeal: payload
+            }
 
         case LOADER:
             return {

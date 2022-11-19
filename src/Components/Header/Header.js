@@ -12,9 +12,9 @@ const Header = () => {
 
       <div className="header__links">
         <Link to="/" className="header__link">Home</Link>
-        <Link to="/about" className="header__link">About</Link>
-        <Link to="/contacts" className="header__link">Contacts</Link>
+        <Link to="/randomizer" className="header__link">Randomizer</Link>
         <Link to="/favorite" className="header__link">Favorite meals</Link>
+        <Link to="/about" className="header__link">About</Link>
       </div>
     </header>
   );

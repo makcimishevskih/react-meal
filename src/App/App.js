@@ -1,7 +1,6 @@
 import './app.scss';
 
 import { Suspense } from "react";
-
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 
 import Header from "../Components/Header";
@@ -10,15 +9,18 @@ import Preloader from "../Components/Preloader";
 import SearchPanel from "../Components/SearchPanel";
 
 import {
-  About,CategoryId,
+  About,
+  CategoryId,
   Category,
-  CategoryName,Contacts,PageNotFound,
-  Search,Favorite
+  CategoryName,
+  Randomizer,
+  PageNotFound,
+  Search,
+  Favorite
 } from '../pages';
 
 // Rename components
-// Картинки из нью имэдж
-// кеширование
+// Kеширование
 
 function App () {
 
@@ -40,7 +42,7 @@ function App () {
             <Route path="favorite" element={<Favorite />} />
 
             <Route path="about" element={<About />} />
-            <Route path="contacts" element={<Contacts />} />
+            <Route path="randomizer" element={<Randomizer />} />
             <Route path="*" element={<PageNotFound />} />
 
           </Routes>

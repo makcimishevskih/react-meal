@@ -43,7 +43,7 @@ const useFetch = () => {
             const response = await fetch(FILTER_BY_CATEGORY + name);
             if (response.ok) {
                 const data = await response.json();
-                const newData = formatFilterData(data.meals);
+                const newData = formatData(data.meals);
                 loader(false);
                 return newData;
             }
@@ -53,7 +53,7 @@ const useFetch = () => {
             throw new Error('Error',err,error);
         }
 
-        function formatFilterData (data) {
+        function formatData (data) {
             return data.map(el => {
                 return {
                     id: el.idMeal,
@@ -133,7 +133,7 @@ const useFetch = () => {
 
     }
 
-    const getRandomMeal = async () => {
+    const getRandomMealData = async () => {
         loader(true);
         error();
 
@@ -142,12 +142,28 @@ const useFetch = () => {
             if (response.ok) {
                 const data = await response.json();
                 loader(false);
-                return data.meals[0];
+                return formatData(data.meals)[0];
             }
         } catch (err) {
             loader(false);
             error('Fetch error: ',err,error);
             throw new Error('Error',err,error);
+        }
+
+        function formatData (data) {
+            return data.map(el => {
+                el.strYoutube = el.strYoutube.replace(/(watch\?v=)/,"embed/");
+                return {
+                    id: el.idMeal,
+                    area: el.strArea,
+                    category: el.strCategory,
+                    instruction: el.strInstructions,
+                    name: el.strMeal,
+                    image: el.strMealThumb,
+                    video: el.strYoutube,
+                    link: el.strSource
+                };
+            });
         }
     }
 
@@ -157,7 +173,7 @@ const useFetch = () => {
         getFilterByCategory,
         getMealById,
         getMealByName,
-        getRandomMeal,
+        getRandomMealData,
     }
 }
 

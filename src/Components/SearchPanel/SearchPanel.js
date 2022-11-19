@@ -1,8 +1,8 @@
 import { useNavigate,useLocation,useParams } from "react-router-dom";
-import { getMealFromSearch,getMealItemFromSearch } from "../../actionCreators/bindActionCreators";
+import { updateSearchCategory,getMealItemFromSearch } from "../../actionCreators/bindActionCreators";
 import useFetch from "../../hooks/useFetch";
 import { useAppSelector } from "../../store/store";
-import css from './searchPanel.module.scss';
+import css from "./searchPanel.module.scss";
 
 const SearchPanel = () => {
   const searchMeal = useAppSelector((state) => state.mealReducer.searchMeal);
@@ -12,8 +12,8 @@ const SearchPanel = () => {
 
 
   const handleChange = (e) => {
-    e.target.value = e.target.value.replace(/\d/ig,'');
-    getMealFromSearch(e.target.value);
+    const searchValue = e.target.value.replace(/\d/ig,"");
+    updateSearchCategory(searchValue);
   }
 
 
@@ -32,9 +32,9 @@ const SearchPanel = () => {
         <input onChange={handleChange}
           className={css.input}
           value={searchMeal}
-          name='name'
+          name="name"
           type="text"
-          placeholder="Type some meal..." />
+          placeholder="Type some meal category..." />
       </form>
     </div>
   );

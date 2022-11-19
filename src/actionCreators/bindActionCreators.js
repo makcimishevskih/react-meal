@@ -1,6 +1,6 @@
-import { bindActionCreators } from "redux";
 import store from "../store";
 import * as actions from './actionCreators';
+import { bindActionCreators } from "redux";
 
 const { dispatch } = store;
-export const { addFavoriteMeal,deleteFavoriteMeal,getMealFromSearch,getMealItemFromSearch,chooseCategoryId,chooseCategory,getAllCategories,error,loader } = bindActionCreators(actions,dispatch);
+export const { getRandomMeal,addFavoriteMeal,deleteFavoriteMeal,updateSearchCategory,getMealItemFromSearch,chooseCategoryId,chooseCategory,getAllCategories,error,loader } = bindActionCreators(actions,dispatch);

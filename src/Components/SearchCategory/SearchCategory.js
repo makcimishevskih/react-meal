@@ -1,11 +1,13 @@
-
 import css from './searchCategory.module.scss';
-import Preloader from "../Preloader";
 
 import { useAppSelector } from "../../store/store";
 import { useNavigate,Link,useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
 import { addFavoriteMeal,deleteFavoriteMeal } from "../../actionCreators/bindActionCreators";
+
+import Preloader from "../Preloader";
+import MyLazyImage from "../LazyImage/MyLazyImage";
+import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
 
 const SearchCategory = () => {
   const { favoriteMeals,searchItems,loader,error } = useAppSelector((state) => state.mealReducer);
@@ -25,7 +27,7 @@ const SearchCategory = () => {
 
       {
         !loader && !error && searchItems ? searchItems.map(el =>
-          <View key={el.id} searchItems={searchItems} favoriteMeals={favoriteMeals} {...el} />
+          <View key={el.id} searchElem={el} searchItems={searchItems} favoriteMeals={favoriteMeals} {...el} />
         ) : null
       }
     </div>
@@ -35,32 +37,18 @@ const SearchCategory = () => {
 export default SearchCategory;
 
 
-const View = ({ searchItems,favoriteMeals,id,image,name,area,link,category,instruction }) => {
-
-  const navigate = useNavigate();
-  const [idd,setIdd] = useState(false);
-
-  const handleClickAdd = (id) => {
-    if (favoriteMeals.findIndex(el => el.id === id) === -1) {
-      const searchItemIndex = searchItems.findIndex(el => el.id === id);
-      setIdd(idd);
-      addFavoriteMeal(searchItems[searchItemIndex]);
-    }
-  }
-
-  const handleClickRemove = (id) => {
-    deleteFavoriteMeal(id);
-  }
-
-  let classes = favoriteMeals.findIndex((item) => item.id === id) !== -1;
-
+const View = ({ searchElem,searchItems,favoriteMeals,id,image,name,area,link,category,instruction }) => {
+  const { goBack,classes,handleClickAdd,handleClickRemove } = useFavoriteWithNav(searchElem);
 
   return (
-    <div key={id} className="col s12 m12 l12" >
+    <div className="col s12 m12 l12" >
       <div className="card">
 
         <div className="card-image">
-          <img src={image} data-src={image} alt={name} />
+          <MyLazyImage
+            height={700}
+            image={image}
+            alt={category} />
           <span className="card-title card-title_black">{area}</span>
         </div>
 
@@ -87,7 +75,7 @@ const View = ({ searchItems,favoriteMeals,id,image,name,area,link,category,instr
         <a className="router-link" target='_blank' href={link}>
           Click to get the recipe
         </a>
-        <Link className="router-link" onClick={() => navigate(-1)}>Back to home</Link>
+        <Link className="router-link" onClick={() => goBack(-1)}>Back to home</Link>
       </div>
     </div>
   );

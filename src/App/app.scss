@@ -49,6 +49,7 @@ iframe,
 img {
   max-width: 100% !important;
   max-height: 100% !important;
+  object-fit: cover;
 }
 
 iframe {
@@ -58,11 +59,11 @@ iframe {
 
 
 .star-wrapper {
-  max-width: 400px;
   font-size: 18px;
   letter-spacing: 2px;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
   align-items: center;
   text-transform: uppercase;
   cursor: pointer;
@@ -79,8 +80,23 @@ iframe {
     color: gold;
   }
 
+
   .star.added+span {
     color: red;
     text-decoration: underline;
   }
+}
+.card-title {
+  color: black !important;
+}
+.card-content {
+  padding: 10px !important;
+  p {
+    margin-bottom:10px !important;
+  }
+}
+
+.card {
+  min-height: 350px;
+  max-height: 100%;
 }
