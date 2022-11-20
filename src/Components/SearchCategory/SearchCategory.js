@@ -9,28 +9,43 @@ import Preloader from "../Preloader";
 import MyLazyImage from "../LazyImage/MyLazyImage";
 import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
 
+import { cutMyStrMin } from '../../helpers/helpers';
+
 const SearchCategory = () => {
   const { favoriteMeals,searchItems,loader,error } = useAppSelector((state) => state.mealReducer);
 
+  const { pathname,search } = useLocation();
+
+  const isPreloader = loader && !error ? <Preloader /> : null;
+  const isError = !loader && error ? <div>Error</div> : null;
+
   return (
     <div className="row">
-      {loader && !error ? <Preloader /> : null}
-      {!loader && error ? <div>Error</div> : null}
-      {!loader && !error && !searchItems ? <>
-        <div>
-          Not found value
-        </div>
-        <br />
-        <Link className="router-link" to='/'>Back to home</Link>
-      </> : null
-      }
-
+      {isPreloader}
+      {isError}
       {
-        !loader && !error && searchItems ? searchItems.map(el =>
-          <View key={el.id} searchElem={el} searchItems={searchItems} favoriteMeals={favoriteMeals} {...el} />
-        ) : null
+        <>
+          {
+            !loader && !error && searchItems ?
+              <>
+                <h4>Searched meals categories</h4>
+                {
+                  searchItems.map(el =>
+                    <View key={el.id} searchElem={el} searchItems={searchItems} favoriteMeals={favoriteMeals} {...el} />
+                  )
+                }
+              </>
+              : <>
+                <div className="not-found">
+                  Not found value:<br /> <span>{cutMyStrMin(search,'=')}</span>
+                </div>
+                <br />
+                <Link className="router-link" to='/'>Back to home</Link>
+              </>
+          }
+        </>
       }
-    </div>
+    </div >
   );
 }
 
@@ -80,4 +95,3 @@ const View = ({ searchElem,searchItems,favoriteMeals,id,image,name,area,link,cat
     </div>
   );
 }
-  // {/* <iframe src={el.video} title={el.name} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}

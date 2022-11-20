@@ -1,5 +1,7 @@
 import css from './allCategories.scss';
 
+import { motion } from 'framer-motion';
+
 import useFetch from "../../hooks/useFetch";
 import { useEffect,useMemo,useState,useRef } from "react";
 import { useAppSelector } from "../../store/store";
@@ -28,20 +30,27 @@ const AllCategories = () => {
     }
   },[]);
 
+  const isPreloader = loader && !error ? <Preloader /> : null;
+  const isError = !loader && error ? <div>Error</div> : null;
 
   return (
     <div className="row">
-      {loader && !error ? <Preloader /> : null}
-      {!loader && error ? <div>Error</div> : null}
-      {!loader && !error && !allCategories ? <div>DONT HAVE ANY MEALS CATEGORY</div> : null}
+      {isPreloader}
+      {isError}
 
       {allCategories && !loader && !error ?
-        allCategories.map((el,i) => (
-          <View key={el.id}
-            {...el} />
-        ))
+        <>
+          <h4>All categories</h4>
+          {allCategories.map((el,i) => (
+            <View key={el.id} index={i}
+              {...el} />
+          ))
+          }
+        </>
         :
-        null}
+        <div className="not-found">
+          DONT HAVE ANY MEALS CATEGORY
+        </div>}
     </div >
   );
 }
@@ -49,9 +58,12 @@ const AllCategories = () => {
 export default AllCategories;
 
 
-const View = ({ id,category,descr,image }) => {
+const View = ({ id,category,descr,image,index }) => {
   return (
-    <div className="col s12 m6 l6">
+    <motion.div
+      initial={index % 2 ? { x: 100 } : { x: -100 }}
+      animate={{ x: 0 }}
+      className="col s12 m6 l6" >
       <div className="card">
         <div className="card-image">
           <MyLazyImage
@@ -76,6 +88,6 @@ const View = ({ id,category,descr,image }) => {
           Watch category
         </Link>
       </div>
-    </div>
+    </motion.div >
   );
 }

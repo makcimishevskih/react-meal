@@ -61,7 +61,8 @@ iframe {
 .star-wrapper {
   font-size: 18px;
   letter-spacing: 2px;
-  margin: 0 auto;
+  margin: 10px auto 0px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,6 +73,10 @@ iframe {
     color: gold;
     padding: 10px;
     font-size: 22px;
+  }
+
+  span {
+    user-select: none;
   }
 }
 
@@ -86,17 +91,33 @@ iframe {
     text-decoration: underline;
   }
 }
+
 .card-title {
+  width: 100%;
   color: black !important;
 }
+
 .card-content {
   padding: 10px !important;
+
   p {
-    margin-bottom:10px !important;
+    margin-bottom: 10px !important;
   }
 }
 
 .card {
   min-height: 350px;
   max-height: 100%;
+}
+
+.not-found {
+  font-size: 24px;
+
+  span {
+    font-weight: 900;
+    color: #5aff5a;
+  }
+}
+h4, h5 {
+  font-weight: 900;
 }

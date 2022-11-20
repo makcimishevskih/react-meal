@@ -18,8 +18,6 @@ const SingleCategory = () => {
     const { name } = useParams();
 
     useEffect(() => {
-        console.log(!!window.localStorage.getItem(`${name}Category`))
-
         if (!window.localStorage.getItem(`${name}Category`)) {
             getFilterByCategory(name)
                 .then(category => {
@@ -34,19 +32,27 @@ const SingleCategory = () => {
     },[]);
 
 
+    const isPreloader = loader && !error && !activeCategory ? <Preloader /> : null;
+    const isError = !loader && error ? <div>Error</div> : null;
+
     return (
-        <>
-            <div className='row'>
-                {loader && !error && !activeCategory ? <Preloader /> : null}
-                {!loader && error ? <div>Error</div> : null}
+        <div className='row'>
 
-                {activeCategory && !loader && !error && activeCategory.map((el) => (
-                    <View paramsName={name} key={el.id} {...el} />
-                ))
-                }
+            {isPreloader}
+            {isError}
 
-            </div >
-        </>
+            {activeCategory && !loader && !error ?
+                <>
+                    <h4>Category: {name}</h4>
+
+                    {activeCategory.map((el) => (
+                        <View key={el.id} paramsName={name} {...el} />
+                    ))
+                    }
+                </>
+                : null
+            }
+        </div >
     );
 }
 

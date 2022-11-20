@@ -1,5 +1,5 @@
 .row {
-    margin-top: 40px !important;
+    margin-top: 20px !important;
     margin-bottom: 40px;
 }
 
@@ -13,28 +13,6 @@
     gap: 15px;
 }
 
-.fade-enter {
-    opacity: 0;
-    visibility: hidden;
-    transition: all ease 1s;
-}
-
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    visibility: visible;
-    transition: all ease 1s;
-}
-
-.fade-exit {
-    visibility: visible;
-    opacity: 0;
-}
-
-.fade-exit.fade-exit-active {
-    opacity: 0;
-    visibility: hidden;
-    transition: all ease 1s;
-}
 
 .mealCard {
     padding: 10px;
@@ -88,4 +66,12 @@
     border: 2px solid rgb(90, 255, 90);
     color: black;
     margin: 5px;
+    transition: color 0.1s ease-in-out;
+    &:hover {
+        color: gold;
+    }
+
+    &:focus {
+        border-color: #000000;
+    }
 }

@@ -9,25 +9,39 @@ import { useAppSelector } from "../../store/store";
 import Preloader from "../Preloader";
 import MyLazyImage from "../LazyImage/MyLazyImage";
 import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
-import { CSSTransition } from "react-transition-group";
 
 const FavoriteMeals = () => {
   const { favoriteMeals,loader,error } = useAppSelector(state => state.mealReducer);
 
+  const isPreloader = loader && !error ? <Preloader /> : null;
+  const isError = !loader && error ? <div>Error</div> : null;
+
   return (
     <div className="row">
-      {loader && !error ? <Preloader /> : null}
-      {!loader && error ? <div>Error</div> : null}
+      {isPreloader}
+      {isError}
 
       {
-        favoriteMeals.length && !loader && !error ?
-          favoriteMeals.map((el,i) => (
-            <View
-              favoriteMeals={favoriteMeals}
-              key={el.id}
-              {...el} />
-          ))
-          : <div>DONT HAVE ANY MEALS CATEGORY</div>
+        !!favoriteMeals.length && !loader && !error ?
+          <>
+            <h4>Favorite meals</h4>
+            <div>Click to image to get the instruction</div>
+            {
+              favoriteMeals.map((el,i) => (
+                <View
+                  favoriteMeals={favoriteMeals}
+                  key={el.id}
+                  {...el} />
+              ))
+            }
+          </>
+          :
+          <motion.div className="col s12 m12 l12 not-found"
+            initial={{ opacity: 0,y: 500 }}
+            animate={{ opacity: 1,y: 0 }}
+          >
+            DON'T HAVE ANY FAVORITE MEALS
+          </motion.div>
       }
     </div >
   );
@@ -55,14 +69,15 @@ const View = ({ id,name,category,image,instruction }) => {
           <div
             className="card">
             <Link to={`/category/${category}/${id}`}>
-              <div className="card-image">
+              <motion.div
+                whileHover={{ opacity: 0.8 }}
+                className="card-image">
                 <MyLazyImage
-                  height={800}
                   image={image}
                   alt={category}
                 />
                 <span className="card-title card-title_black">{category}</span>
-              </div>
+              </motion.div>
             </Link>
             <div onClick={() => handleClickRemove(id)} className="star-wrapper">
               <i className={"fa-solid fa-star star added"}></i>

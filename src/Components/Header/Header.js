@@ -1,20 +1,20 @@
 import './header.scss';
 import logo from '../../images/TheMealLogo.png';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
 
   return (
     <header className="header padding">
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo} alt="logo" />
-      </Link>
+      </NavLink>
 
       <div className="header__links">
-        <Link to="/" className="header__link">Home</Link>
-        <Link to="/randomizer" className="header__link">Randomizer</Link>
-        <Link to="/favorite" className="header__link">Favorite meals</Link>
-        <Link to="/about" className="header__link">About</Link>
+        <NavLink activeclassname="active" to="/" className="header__link">Home</NavLink>
+        <NavLink activeclassname="active" to="/randomizer" className="header__link">Randomizer</NavLink>
+        <NavLink activeclassname="active" to="/favorite" className="header__link">Favorite meals</NavLink>
+        <NavLink activeclassname="active" to="/about" className="header__link">About</NavLink>
       </div>
     </header>
   );

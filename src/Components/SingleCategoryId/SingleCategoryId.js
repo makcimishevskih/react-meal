@@ -23,16 +23,22 @@ const SingleCategoryID = () => {
             .then((data) => chooseCategoryId(data));
     },[]);
 
+    const isPreloader = loader && !error ? <Preloader /> : null;
+    const isError = !loader && error ? <div>Error</div> : null;
 
     return (
         <div className='row'>
-            {loader && !error ? <Preloader /> : null}
-            {!loader && error ? <div>Error</div> : null}
+            {isPreloader}
+            {isError}
 
             {categoryId &&
-                <View
-                    categoryId={categoryId}
-                />
+                <>
+                    <h4>{categoryId.name}</h4>
+                    <h4>Instruction</h4>
+                    <View
+                        categoryId={categoryId}
+                    />
+                </>
             }
         </div >
     );
@@ -44,7 +50,7 @@ const View = ({ categoryId }) => {
 
     return (
         <div className="col s12 m12 center" >
-            <button onClick={() => goBack(-1)} className="router-link" >To category</button>
+            <button onClick={() => goBack(-1)} className="router-link" >Back to category</button>
             <div className="card" >
                 <div className="card-image">
                     <MyLazyImage

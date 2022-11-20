@@ -10,12 +10,10 @@ const SearchPanel = () => {
 
   const navigate = useNavigate();
 
-
   const handleChange = (e) => {
     const searchValue = e.target.value.replace(/\d/ig,"");
     updateSearchCategory(searchValue);
   }
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
