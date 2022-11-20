@@ -6,7 +6,7 @@ import useFetch from "../../hooks/useFetch";
 import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
 import { useAppSelector } from "../../store/store";
 
-import { getRandomMeal } from "../../actionCreators/bindActionCreators";
+import { getRandomMealAC } from "../../actionCreators/bindActionCreators";
 
 import Preloader from "../../Components/Preloader";
 import MyLazyImage from "../LazyImage/MyLazyImage";
@@ -22,18 +22,18 @@ const RandomItem = () => {
   let timerId;
 
   const [isVisible,setIsVisible] = useState(true);
-  const { getRandomMealData } = useFetch();
+  const { getRandomMeal } = useFetch();
   const { handleClickAdd,handleClickRemove,goBack,classes } = useFavoriteWithNav(randomMeal);
 
   useEffect(() => {
-    getRandomMealData().then((data) => getRandomMeal(data));
+    getRandomMeal().then((data) => getRandomMealAC(data));
   },[]);
 
   useEffect(() => {
     if (isTimerOn) {
       timerId = setTimeout(() => {
         setIsVisible(false);
-        getRandomMealData().then((data) => getRandomMeal(data));
+        getRandomMeal().then((data) => getRandomMealAC(data));
       },3000);
     }
     return () => {

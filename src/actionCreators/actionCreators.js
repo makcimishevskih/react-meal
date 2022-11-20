@@ -13,4 +13,4 @@ export const getMealItemFromSearch = (searchItems) => ({ type: SEARCH_ITEMS,payl
 export const addFavoriteMeal = (item) => ({ type: ADD_FAVORITE_MEALS,payload: item });
 export const deleteFavoriteMeal = (item) => ({ type: DELETE_FAVORITE_MEALS,payload: item });
 
-export const getRandomMeal = (randomMeal) => ({ type: GET_RANDOM_MEAL,payload: randomMeal });
+export const getRandomMealAC = (randomMeal) => ({ type: GET_RANDOM_MEAL,payload: randomMeal });

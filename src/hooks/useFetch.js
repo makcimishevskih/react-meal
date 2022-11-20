@@ -15,7 +15,7 @@ const useFetch = () => {
             if (response.ok) {
                 const data = await response.json();
                 loader(false)
-                return formatRequestDataCategories(data.categories);
+                return formatDataToCategories(data.categories);
             }
         } catch (err) {
             error('Fetch error: ',err,error);
@@ -23,7 +23,7 @@ const useFetch = () => {
             throw new Error('Error',err,error);
         }
 
-        function formatRequestDataCategories (data) {
+        function formatDataToCategories (data) {
             return data.map(el => {
                 return {
                     id: el.idCategory,
@@ -43,9 +43,8 @@ const useFetch = () => {
             const response = await fetch(FILTER_BY_CATEGORY + name);
             if (response.ok) {
                 const data = await response.json();
-                const newData = formatData(data.meals);
                 loader(false);
-                return newData;
+                return formatDataForCategory(data.meals);
             }
         } catch (err) {
             loader(false);
@@ -53,7 +52,7 @@ const useFetch = () => {
             throw new Error('Error',err,error);
         }
 
-        function formatData (data) {
+        function formatDataForCategory (data) {
             return data.map(el => {
                 return {
                     id: el.idMeal,
@@ -79,21 +78,7 @@ const useFetch = () => {
             error('Fetch error: ',err,error);
             throw new Error('Error',err,error);
         }
-        function formatData (data) {
-            return data.map(el => {
-                el.strYoutube = el.strYoutube.replace(/(watch\?v=)/,"embed/");
-                return {
-                    id: el.idMeal,
-                    area: el.strArea,
-                    category: el.strCategory,
-                    instruction: el.strInstructions,
-                    name: el.strMeal,
-                    image: el.strMealThumb,
-                    video: el.strYoutube,
-                    link: el.strSource
-                };
-            });
-        }
+
     }
 
     const getMealByName = async (name) => {
@@ -114,26 +99,9 @@ const useFetch = () => {
             error('Fetch error: ',err,error);
             throw new Error('Error',err,error);
         }
-
-        function formatData (data) {
-            return data.map(el => {
-                el.strYoutube = el.strYoutube.replace(/(watch\?v=)/,"embed/");
-                return {
-                    id: el.idMeal,
-                    area: el.strArea,
-                    category: el.strCategory,
-                    instruction: el.strInstructions,
-                    name: el.strMeal,
-                    image: el.strMealThumb,
-                    video: el.strYoutube,
-                    link: el.strSource
-                };
-            });
-        }
-
     }
 
-    const getRandomMealData = async () => {
+    const getRandomMeal = async () => {
         loader(true);
         error();
 
@@ -149,31 +117,27 @@ const useFetch = () => {
             error('Fetch error: ',err,error);
             throw new Error('Error',err,error);
         }
-
-        function formatData (data) {
-            return data.map(el => {
-                el.strYoutube = el.strYoutube.replace(/(watch\?v=)/,"embed/");
-                return {
-                    id: el.idMeal,
-                    area: el.strArea,
-                    category: el.strCategory,
-                    instruction: el.strInstructions,
-                    name: el.strMeal,
-                    image: el.strMealThumb,
-                    video: el.strYoutube,
-                    link: el.strSource
-                };
-            });
-        }
     }
 
-
+    function formatData (data) {
+        return data.map(el => {
+            return {
+                id: el.idMeal,
+                area: el.strArea,
+                category: el.strCategory,
+                instruction: el.strInstructions,
+                name: el.strMeal,
+                image: el.strMealThumb,
+                link: el.strSource
+            };
+        });
+    }
     return {
         getMealCategoriesData,
         getFilterByCategory,
         getMealById,
         getMealByName,
-        getRandomMealData,
+        getRandomMeal,
     }
 }
 
