@@ -1,4 +1,4 @@
-import RandomItem from "../Components/RandomItem";
+import RandomItem from "@components/random-item";
 
 const Randomizer = () => {
 	return <RandomItem />;

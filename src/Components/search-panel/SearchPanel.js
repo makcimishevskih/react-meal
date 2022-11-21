@@ -1,7 +1,7 @@
 import { useNavigate,useLocation,useParams } from "react-router-dom";
-import { updateSearchCategory,getMealItemFromSearch } from "../../actionCreators/bindActionCreators";
-import useFetch from "../../hooks/useFetch";
-import { useAppSelector } from "../../store/store";
+import { updateSearchCategory,getMealItemFromSearch } from "@actionCreators/bindActionCreators";
+import useFetch from "@hooks/useFetch";
+import { useAppSelector } from "@store/store";
 import css from "./searchPanel.module.scss";
 
 const SearchPanel = () => {

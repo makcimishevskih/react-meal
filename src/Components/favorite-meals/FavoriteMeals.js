@@ -1,14 +1,14 @@
 import './favoriteMeals.scss';
 import { motion,AnimatePresence } from 'framer-motion';
-
-import { useState } from "react";
 import { Link } from 'react-router-dom';
-import { addFavoriteMeal,deleteFavoriteMeal } from "../../actionCreators/bindActionCreators";
-import { useAppSelector } from "../../store/store";
 
-import Preloader from "../Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
-import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
+import { useEffect,useRef,useState } from "react";
+import { useAppSelector } from "@store/store";
+import useFavoriteWithNav from "@hooks/useFavoriteWithNav";
+import { addFavoriteMeal,deleteFavoriteMeal } from "@actionCreators/bindActionCreators";
+
+import Preloader from "../preloader";
+import MyLazyImage from "../my-lazy-Image";
 
 const FavoriteMeals = () => {
   const { favoriteMeals,loader,error } = useAppSelector(state => state.mealReducer);
@@ -48,15 +48,24 @@ const FavoriteMeals = () => {
 }
 
 const View = ({ id,name,category,image,instruction }) => {
+  let timerId = useRef();
 
   const [isVisible,setIsVisible] = useState(true);
 
   const handleClickRemove = (id) => {
     setIsVisible(!isVisible);
-    setTimeout(() => {
+    timerId = setTimeout(() => {
       deleteFavoriteMeal(id);
-    },1000)
+    },200)
+    console.log('click');
   };
+
+  useEffect(() => {
+    return () => {
+      console.log('useeffect');
+      clearTimeout(timerId);
+    }
+  },[isVisible])
 
   return (
     <AnimatePresence>

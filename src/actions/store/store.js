@@ -1,6 +1,6 @@
 import { configureStore,getDefaultMiddleware } from "@reduxjs/toolkit";
 import { useDispatch,useSelector } from 'react-redux';
-import mealReducer from "../reducers/mealReducer";
+import mealReducer from "@reducers/mealReducer";
 
 const middleware = getDefaultMiddleware({
     immutableCheck: false,
@@ -16,8 +16,7 @@ const store = configureStore({
     devTools: process.env.NODE_ENV !== 'production',
 });
 
-
-export const useAppDispatch: () => AppDispatch = useDispatch // Export a hook that can be reused to resolve types
-export const useAppSelector: () => AppSelector = useSelector // Export a hook that can be reused to resolve types
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: () => AppSelector = useSelector;
 
 export default store;

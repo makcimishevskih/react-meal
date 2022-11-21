@@ -5,7 +5,7 @@ import {
     CHOOSE_CATEGORY,CHOOSE_CATEGORY_ID,
     LOADER,ERROR,
     GET_RANDOM_MEAL
-} from "../actions/actions";
+} from "../../actions/actions";
 
 const initialState = {
     allCategories: null,

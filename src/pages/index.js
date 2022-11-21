@@ -1,12 +1,12 @@
 import { lazy } from "react";
 
 const Category = lazy(() => import('./Category'));
-const About = lazy(() => import("./About"));
-const CategoryId = lazy(() => import('./CategoryId'));
 const CategoryName = lazy(() => import('./CategoryName'));
+const CategoryId = lazy(() => import('./CategoryId'));
 const Randomizer = lazy(() => import('./Randomizer'));
-const Search = lazy(() => import('./Search'));
-const PageNotFound = lazy(() => import('./PageNotFound'));
 const Favorite = lazy(() => import('./Favorite'));
+const Search = lazy(() => import('./Search'));
+const About = lazy(() => import("./About"));
+const PageNotFound = lazy(() => import('./PageNotFound'));
 
 export { Favorite,About,Category,CategoryId,CategoryName,Randomizer,PageNotFound,Search };

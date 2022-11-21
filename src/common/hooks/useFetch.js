@@ -1,6 +1,6 @@
 import { useCallback,useState } from "react";
-import { error,loader } from "../actionCreators/bindActionCreators";
-import { SEARCH_BY_ID,SEARCH_BY_NAME,SEARCH_CATEGORIES,SEARCH_RANDOM_MEAL,FILTER_BY_CATEGORY } from "../api";
+import { error,loader } from "@actionCreators/bindActionCreators";
+import { SEARCH_BY_ID,SEARCH_BY_NAME,SEARCH_CATEGORIES,SEARCH_RANDOM_MEAL,FILTER_BY_CATEGORY } from "../../api";
 
 // url and api key from .env.local
 const useFetch = () => {

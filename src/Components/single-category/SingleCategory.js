@@ -1,14 +1,14 @@
-import css from './activeCategory.module.scss';
+import css from './singleCategory.module.scss';
 
 import { useEffect,useState } from "react";
 import { Link,useParams } from 'react-router-dom';
 
-import useFetch from "../../hooks/useFetch";
-import { useAppSelector } from "../../store/store";
-import { chooseCategoryId,chooseCategory } from "../../actionCreators/bindActionCreators";
+import useFetch from "@hooks/useFetch";
+import { useAppSelector } from "@store/store";
+import { chooseCategoryId,chooseCategory } from "@actionCreators/bindActionCreators";
 
-import Preloader from "../Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
+import Preloader from "../preloader";
+import MyLazyImage from "../my-lazy-Image";
 
 
 const SingleCategory = () => {

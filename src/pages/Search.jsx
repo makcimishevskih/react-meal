@@ -1,4 +1,4 @@
-import SearchCategory from "../Components/SearchCategory";
+import SearchCategory from "@components/search-category";
 
 const Search = () => {
 	return <SearchCategory />;

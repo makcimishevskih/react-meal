@@ -1,5 +1,5 @@
 import "./pageNotFound.scss";
-import notFound404 from "../images/notFound404.webp";
+import notFound404 from "@assets/notFound404.webp";
 
 const PageNotFound = () => {
 	return (

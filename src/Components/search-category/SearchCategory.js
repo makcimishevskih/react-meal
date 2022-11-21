@@ -1,20 +1,21 @@
 import css from './searchCategory.module.scss';
 
-import { useAppSelector } from "../../store/store";
-import { useNavigate,Link,useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
-import { addFavoriteMeal,deleteFavoriteMeal } from "../../actionCreators/bindActionCreators";
+import { useNavigate,Link,useLocation } from "react-router-dom";
+import { useAppSelector } from "@store/store";
+import useFavoriteWithNav from "@hooks/useFavoriteWithNav";
 
-import Preloader from "../Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
-import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
+import { addFavoriteMeal,deleteFavoriteMeal } from "@actionCreators/bindActionCreators";
 
-import { cutMyStrMin } from '../../helpers/helpers';
+import Preloader from "../preloader";
+import MyLazyImage from "../my-lazy-Image";
+
+import { cutMyStrMin } from '@helpers/helpers';
 
 const SearchCategory = () => {
   const { favoriteMeals,searchItems,loader,error } = useAppSelector((state) => state.mealReducer);
 
-  const { pathname,search } = useLocation();
+  const { search } = useLocation();
 
   const isPreloader = loader && !error ? <Preloader /> : null;
   const isError = !loader && error ? <div>Error</div> : null;

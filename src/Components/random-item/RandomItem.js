@@ -2,14 +2,14 @@ import './randomItem.scss';
 
 import { useEffect,useState } from "react";
 
-import useFetch from "../../hooks/useFetch";
-import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
-import { useAppSelector } from "../../store/store";
+import useFetch from "@hooks/useFetch";
+import useFavoriteWithNav from "@hooks/useFavoriteWithNav";
+import { useAppSelector } from "@store/store";
 
-import { getRandomMealAC } from "../../actionCreators/bindActionCreators";
+import { getRandomMealAC } from "@actionCreators/bindActionCreators";
 
-import Preloader from "../../Components/Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
+import Preloader from "../preloader";
+import MyLazyImage from "../my-lazy-Image";
 import { motion,AnimatePresence } from "framer-motion";
 
 const RandomItem = () => {

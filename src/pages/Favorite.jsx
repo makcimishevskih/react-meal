@@ -1,4 +1,4 @@
-import FavoriteMeals from "../Components/FavoriteMeals/FavoriteMeals";
+import FavoriteMeals from "@components/favorite-meals";
 
 const Favorite = () => {
 	return <FavoriteMeals />;

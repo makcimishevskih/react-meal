@@ -1,16 +1,16 @@
 import css from './allCategories.scss';
 
 import { motion } from 'framer-motion';
-
-import useFetch from "../../hooks/useFetch";
-import { useEffect,useMemo,useState,useRef } from "react";
-import { useAppSelector } from "../../store/store";
-import { getAllCategories } from "../../actionCreators/bindActionCreators";
-
 import { Link } from "react-router-dom";
 
-import Preloader from "../Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
+import useFetch from "@hooks/useFetch";
+import { useEffect,useMemo,useState,useRef } from "react";
+import { useAppSelector } from "@store/store";
+import { getAllCategories } from "@actionCreators/bindActionCreators";
+
+
+import MyLazyImage from "../my-lazy-Image";
+import Preloader from "../preloader";
 
 
 const AllCategories = () => {

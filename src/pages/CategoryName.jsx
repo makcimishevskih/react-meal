@@ -1,4 +1,4 @@
-import SingleCategory from "../Components/SingleCategory";
+import SingleCategory from "@components/single-category";
 
 const CategoryName = () => {
 	return <SingleCategory />;

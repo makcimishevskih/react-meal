@@ -3,10 +3,10 @@ import './app.scss';
 import { Suspense } from "react";
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import Preloader from "../Components/Preloader";
-import SearchPanel from "../Components/SearchPanel";
+import Header from '@components/header';
+import Footer from "@components/footer";
+import Preloader from "@components/preloader";
+import SearchPanel from "@components/search-panel";
 
 import {
   About,

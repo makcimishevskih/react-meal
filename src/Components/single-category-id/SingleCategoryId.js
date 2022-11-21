@@ -3,14 +3,14 @@ import css from './singleCategoryId.module.scss';
 import { Link,useParams,useNavigate } from 'react-router-dom';
 
 import { useEffect } from "react";
-import { useAppSelector } from "../../store/store";
-import useFetch from "../../hooks/useFetch";
-import useFavoriteWithNav from "../../hooks/useFavoriteWithNav";
+import { useAppSelector } from "@store/store";
+import useFetch from "@hooks/useFetch";
+import useFavoriteWithNav from "@hooks/useFavoriteWithNav";
 
-import { addFavoriteMeal,chooseCategoryId,deleteFavoriteMeal } from "../../actionCreators/bindActionCreators";
+import { addFavoriteMeal,chooseCategoryId,deleteFavoriteMeal } from "@actionCreators/bindActionCreators";
 
-import Preloader from "../Preloader";
-import MyLazyImage from "../LazyImage/MyLazyImage";
+import Preloader from "../preloader";
+import MyLazyImage from "../my-lazy-Image";
 
 const SingleCategoryID = () => {
     const { categoryId,loader,error,favoriteMeals } = useAppSelector((state) => state.mealReducer);
