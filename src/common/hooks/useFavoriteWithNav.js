@@ -4,39 +4,40 @@ import { addFavoriteMeal,deleteFavoriteMeal } from "@actionCreators/bindActionCr
 import { useAppSelector } from "@store/store";
 
 
-const useFavoriteWithNav = (propItem) => {
+const useFavoriteWithNav = (firstPropItem,secondProp) => {
     const { favoriteMeals } = useAppSelector((state) => state.mealReducer);
 
     const [isVisible,setIsVisible] = useState(true);
     const goBack = useNavigate();
     let timerId = useRef();
 
-    let classes = propItem?.id && favoriteMeals.findIndex(
-        (el) => el.id === propItem.id) !== -1;
+    let classes = firstPropItem?.id && favoriteMeals.findIndex(
+        (el) => el.id === firstPropItem.id) !== -1;
 
     const handleClickAdd = useCallback((id) => () => {
         if (favoriteMeals.findIndex((el) => el.id === id) === -1) {
-            addFavoriteMeal(propItem);
+            addFavoriteMeal(firstPropItem);
         }
-    },[propItem?.id,favoriteMeals]);
+    },[firstPropItem?.id,favoriteMeals]);
 
-    const handleClickRemove = useCallback((id,isTimerActive = false) => () => {
+
+    const handleClickRemove = (id,isTimerActive = false) => () => {
         if (isTimerActive) {
             setIsVisible(!isVisible);
             timerId = setTimeout(() => {
                 deleteFavoriteMeal(id);
-            },200)
+            },300)
         } else if (favoriteMeals.findIndex((el) => el.id === id) !== -1) {
             deleteFavoriteMeal(id);
         }
-    },[favoriteMeals]);
+    }
 
 
     useEffect(() => {
         return () => {
             clearTimeout(timerId);
         }
-    },[isVisible])
+    },[])
 
     return {
         classes,

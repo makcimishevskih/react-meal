@@ -13,7 +13,6 @@ import MyLazyImage from "../my-lazy-Image";
 import { motion,AnimatePresence } from "framer-motion";
 
 const RandomItem = () => {
-  console.log('randomItem')
   const { randomMeal,favoriteMeals,loader,error } = useAppSelector(
     (state) => state.mealReducer
   );

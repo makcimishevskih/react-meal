@@ -16,6 +16,8 @@ const FavoriteMeals = () => {
   const isPreloader = loader && !error ? <Preloader /> : null;
   const isError = !loader && error ? <div>Error</div> : null;
 
+  console.log(favoriteMeals,favoriteMeals.length);
+
   return (
     <div className="row">
       {isPreloader}
