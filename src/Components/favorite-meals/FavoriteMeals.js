@@ -1,4 +1,4 @@
-import './favoriteMeals.scss';
+import './FavoriteMeals.scss';
 import { motion,AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -48,24 +48,7 @@ const FavoriteMeals = () => {
 }
 
 const View = ({ id,name,category,image,instruction }) => {
-  let timerId = useRef();
-
-  const [isVisible,setIsVisible] = useState(true);
-
-  const handleClickRemove = (id) => {
-    setIsVisible(!isVisible);
-    timerId = setTimeout(() => {
-      deleteFavoriteMeal(id);
-    },200)
-    console.log('click');
-  };
-
-  useEffect(() => {
-    return () => {
-      console.log('useeffect');
-      clearTimeout(timerId);
-    }
-  },[isVisible])
+  const { isVisible,handleClickRemove } = useFavoriteWithNav();
 
   return (
     <AnimatePresence>
@@ -88,7 +71,7 @@ const View = ({ id,name,category,image,instruction }) => {
                 <span className="card-title card-title_black">{category}</span>
               </motion.div>
             </Link>
-            <div onClick={() => handleClickRemove(id)} className="star-wrapper">
+            <div onClick={handleClickRemove(id,true)} className="star-wrapper">
               <i className={"fa-solid fa-star star added"}></i>
               <span>Delete</span>
             </div>

@@ -17,10 +17,9 @@ import {
   PageNotFound,
   Search,
   Favorite
-} from '../pages';
+} from '../../pages';
 
 // Rename components
-// Kеширование
 
 function App () {
 

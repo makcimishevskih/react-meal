@@ -1,4 +1,4 @@
-import './header.scss';
+import './Header.scss';
 import logo from '@assets/TheMealLogo.png';
 import { NavLink } from "react-router-dom";
 

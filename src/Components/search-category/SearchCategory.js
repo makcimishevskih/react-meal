@@ -1,4 +1,4 @@
-import css from './searchCategory.module.scss';
+import css from './SearchCategory.module.scss';
 
 import { useEffect,useState } from "react";
 import { useNavigate,Link,useLocation } from "react-router-dom";
@@ -73,12 +73,12 @@ const View = ({ searchElem,searchItems,favoriteMeals,id,image,name,area,link,cat
 
             {
               classes ?
-                <div onClick={() => handleClickRemove(id)}>
+                <div onClick={handleClickRemove(id)}>
                   <i className={!classes ? 'fa-regular fa-star star ' : "fa-solid fa-star star added"}></i>
                   <span>Delete</span>
                 </div >
                 :
-                <div onClick={() => handleClickAdd(id)}>
+                <div onClick={handleClickAdd(id)}>
                   <i className={!classes ? 'fa-regular fa-star star' : "fa-solid fa-star star added"}></i>
                   <span>Add</span>
                 </div>

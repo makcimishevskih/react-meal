@@ -1,6 +1,6 @@
-import './randomItem.scss';
+import './RandomItem.scss';
 
-import { useEffect,useState } from "react";
+import { useEffect,useRef,useState } from "react";
 
 import useFetch from "@hooks/useFetch";
 import useFavoriteWithNav from "@hooks/useFavoriteWithNav";
@@ -13,17 +13,18 @@ import MyLazyImage from "../my-lazy-Image";
 import { motion,AnimatePresence } from "framer-motion";
 
 const RandomItem = () => {
+  console.log('randomItem')
   const { randomMeal,favoriteMeals,loader,error } = useAppSelector(
     (state) => state.mealReducer
   );
+  const { handleClickAdd,handleClickRemove,goBack,classes } = useFavoriteWithNav(randomMeal);
+  const { getRandomMeal } = useFetch();
+
+  let timerId = useRef();
 
   const [isTimerOn,setIsTimerOn] = useState(true);
-
-  let timerId;
-
   const [isVisible,setIsVisible] = useState(true);
-  const { getRandomMeal } = useFetch();
-  const { handleClickAdd,handleClickRemove,goBack,classes } = useFavoriteWithNav(randomMeal);
+
 
   useEffect(() => {
     getRandomMeal().then((data) => getRandomMealAC(data));
@@ -42,9 +43,6 @@ const RandomItem = () => {
     }
   },[randomMeal.id,isTimerOn]);
 
-  const toggleAnimate = () => {
-    setIsTimerOn(!isTimerOn);
-  }
 
   const item =
     !loader && !error && randomMeal.id && isVisible ? (
@@ -53,7 +51,6 @@ const RandomItem = () => {
           initial={{ opacity: 0,y: 300 }}
           animate={{ opacity: 1,y: 0 }}
         >
-
           <button
             onClick={() => goBack(-1)}
             className="router-link">
@@ -62,13 +59,13 @@ const RandomItem = () => {
 
           {isTimerOn ?
             <button
-              onClick={toggleAnimate}
+              onClick={() => setIsTimerOn(!isTimerOn)}
               className="router-link">
               Stop animation
             </button>
             :
             <button
-              onClick={toggleAnimate}
+              onClick={() => setIsTimerOn(!isTimerOn)}
               className="router-link">
               Start animation
             </button>
@@ -86,7 +83,7 @@ const RandomItem = () => {
             <div className="card-content">
               <div className="star-wrapper">
                 {classes ? (
-                  <div onClick={() => handleClickRemove(randomMeal.id)}>
+                  <div onClick={handleClickRemove(randomMeal.id)}>
                     <i
                       className={
                         !classes
@@ -96,7 +93,7 @@ const RandomItem = () => {
                     <span>Delete</span>
                   </div>
                 ) : (
-                  <div onClick={() => handleClickAdd(randomMeal.id)}>
+                  <div onClick={handleClickAdd(randomMeal.id)}>
                     <i
                       className={
                         !classes

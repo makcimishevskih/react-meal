@@ -1,4 +1,4 @@
-import css from './singleCategoryId.module.scss';
+import css from './SingleCategoryId.module.scss';
 
 import { Link,useParams,useNavigate } from 'react-router-dom';
 
@@ -62,12 +62,12 @@ const View = ({ categoryId }) => {
                 <div className="card-content">
                     <div className='star-wrapper'>
                         {classes ?
-                            <div onClick={() => handleClickRemove(id)} >
+                            <div onClick={() => (id)} >
                                 <i className={!classes ? 'fa-regular fa-star star ' : "fa-solid fa-star star added"}></i>
                                 <span>Delete</span>
                             </div>
                             :
-                            <div onClick={() => handleClickAdd(id)} >
+                            <div onClick={handleClickAdd(id)} >
                                 <i className={!classes ? 'fa-regular fa-star star' : "fa-solid fa-star star added"}></i>
                                 <span>Add</span>
                             </div>

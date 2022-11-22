@@ -16,6 +16,3 @@ module.exports = {
         }
     },
 };
-
-console.log(13123);
-console.log(123123);

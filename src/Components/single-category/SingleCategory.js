@@ -1,4 +1,4 @@
-import css from './singleCategory.module.scss';
+import css from './SingleCategory.module.scss';
 
 import { useEffect,useState } from "react";
 import { Link,useParams } from 'react-router-dom';

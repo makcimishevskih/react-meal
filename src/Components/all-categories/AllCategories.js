@@ -1,4 +1,4 @@
-import css from './allCategories.scss';
+import css from './AllCategories.scss';
 
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
