@@ -1,6 +1,6 @@
 const path = require('path');
 
-const resolvePath = p => path.resolve(__dirname,p);
+const resolvePath = (p) => path.resolve(__dirname, p);
 
 module.exports = {
     webpack: {
@@ -13,6 +13,6 @@ module.exports = {
             '@store': resolvePath('./src/actions/store'),
             '@reducers': resolvePath('./src/actions/reducers'),
             '@actionCreators': resolvePath('./src/actions/actionCreators'),
-        }
+        },
     },
 };

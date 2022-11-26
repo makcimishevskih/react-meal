@@ -1,11 +1,12 @@
-import css from './SingleCategory.module.scss';
+// import css from './SingleCategory.module.scss';
 
-import { useEffect,useState } from "react";
+import PropTypes from 'prop-types';
+import { useEffect } from "react";
 import { Link,useParams } from 'react-router-dom';
 
 import useFetch from "@hooks/useFetch";
 import { useAppSelector } from "@store/store";
-import { chooseCategoryId,chooseCategory } from "@actionCreators/bindActionCreators";
+import { chooseCategory } from "@actionCreators/bindActionCreators";
 
 import Preloader from "../preloader";
 import MyLazyImage from "../my-lazy-Image";
@@ -58,9 +59,7 @@ const SingleCategory = () => {
 
 export default SingleCategory;
 
-const View = ({ id,name,category,image,paramsName }) => {
-
-    return (
+const View = ({ id,name,category,image,paramsName }) => (
         <div key={id} className="col s6 m6 l6" >
             <div className="card" >
                 <div className="card-image">
@@ -77,4 +76,14 @@ const View = ({ id,name,category,image,paramsName }) => {
             </div>
         </div >
     );
-}
+
+
+
+
+View.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    paramsName: PropTypes.string.isRequired
+};

@@ -1,17 +1,16 @@
-import css from './AllCategories.scss';
-
+// import css from './AllCategories.scss';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 
 import useFetch from "@hooks/useFetch";
-import { useEffect,useMemo,useState,useRef } from "react";
+import { useEffect } from "react";
 import { useAppSelector } from "@store/store";
-import { getAllCategories } from "@actionCreators/bindActionCreators";
 
+import { getAllCategories } from "@actionCreators/bindActionCreators";
 
 import MyLazyImage from "../my-lazy-Image";
 import Preloader from "../preloader";
-
 
 const AllCategories = () => {
   const { allCategories,loader,error } = useAppSelector((state) => state.mealReducer);
@@ -42,8 +41,8 @@ const AllCategories = () => {
         <>
           <h4>All categories</h4>
           {allCategories.map((el,i) => (
-            <View key={el.id} index={i}
-              {...el} />
+            <View key={+el.id} index={i}
+              {...el} id={+el.id} />
           ))
           }
         </>
@@ -58,8 +57,7 @@ const AllCategories = () => {
 export default AllCategories;
 
 
-const View = ({ id,category,descr,image,index }) => {
-  return (
+const View = ({id,category,descr,image,index }) => (
     <motion.div
       initial={index % 2 ? { x: 100 } : { x: -100 }}
       animate={{ x: 0 }}
@@ -91,3 +89,12 @@ const View = ({ id,category,descr,image,index }) => {
     </motion.div >
   );
 }
+
+
+View.propTypes = {
+  id: PropTypes.number,
+  category: PropTypes.string.isRequired,
+  descr: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+};

@@ -1,0 +1,105 @@
+{
+    "settings": {
+        "import/resolver": {
+            "alias": {
+                "map": [
+                    [
+                        "@",
+                        ".src/"
+                    ],
+                    [
+                        "@components",
+                        "./src/components/**/*"
+                    ],
+                    [
+                        "@hooks",
+                        "./src/common/hooks/"
+                    ],
+                    [
+                        "@assets",
+                        "./src/common/assets/*"
+                    ],
+                    [
+                        "@helpers",
+                        "./src/common/helpers/*"
+                    ],
+                    [
+                        "@store",
+                        "./src/actions/store/"
+                    ],
+                    [
+                        "@reducers",
+                        "./src/actions/reducers/"
+                    ],
+                    [
+                        "@actionCreators",
+                        "./src/actions/actionCreators/*"
+                    ]
+                ],
+                "extensions": [
+                    ".ts",
+                    ".tsx",
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:import/recommended",
+        "prettier"
+        // "airbnb",
+        // "plugin:jsx-a11y/recommended",
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "js": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "restrictedNamedExports": [
+            "default"
+        ],
+        "react/jsx-props-no-spreading": [
+            0,
+            {
+                "html": "ignore",
+                "custom": "ignore",
+                "explicitSpread": "ignore"
+            }
+        ],
+        "react/function-component-definition": [
+            0,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".json"
+                ]
+            }
+        ]
+    }
+}

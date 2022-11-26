@@ -26,7 +26,7 @@ const useFetch = () => {
         function formatDataToCategories (data) {
             return data.map(el => {
                 return {
-                    id: el.idCategory,
+                    id: +el.idCategory,
                     category: el.strCategory,
                     descr: el.strCategoryDescription,
                     image: el.strCategoryThumb,
@@ -55,7 +55,7 @@ const useFetch = () => {
         function formatDataForCategory (data) {
             return data.map(el => {
                 return {
-                    id: el.idMeal,
+                    id: +el.idMeal,
                     name: el.strMeal,
                     image: el.strMealThumb,
                 };
@@ -122,7 +122,7 @@ const useFetch = () => {
     function formatData (data) {
         return data.map(el => {
             return {
-                id: el.idMeal,
+                id: +el.idMeal,
                 area: el.strArea,
                 category: el.strCategory,
                 instruction: el.strInstructions,

@@ -1,4 +1,4 @@
-import './Footer.scss';
+import "./Footer.scss";
 
 const Footer = () => {
   return (
@@ -18,8 +18,8 @@ const Footer = () => {
           <img />
         </a>
       </div>
-    </div >
+    </div>
   );
-}
+};
 
 export default Footer;

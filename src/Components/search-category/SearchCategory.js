@@ -1,5 +1,6 @@
 import css from './SearchCategory.module.scss';
 
+import PropTypes,{ shape } from "prop-types";
 import { useEffect,useState } from "react";
 import { useNavigate,Link,useLocation } from "react-router-dom";
 import { useAppSelector } from "@store/store";
@@ -32,7 +33,11 @@ const SearchCategory = () => {
                 <h4>Searched meals categories</h4>
                 {
                   searchItems.map(el =>
-                    <View key={el.id} searchElem={el} searchItems={searchItems} favoriteMeals={favoriteMeals} {...el} />
+                    <View key={el.id}
+                      searchElem={el}
+                      searchItems={searchItems}
+                      favoriteMeals={favoriteMeals}
+                      {...el} />
                   )
                 }
               </>
@@ -53,9 +58,8 @@ const SearchCategory = () => {
 export default SearchCategory;
 
 
-const View = ({ searchElem,searchItems,favoriteMeals,id,image,name,area,link,category,instruction }) => {
+const View = ({ searchElem,id,image,name,area,link,category,instruction }) => {
   const { goBack,classes,handleClickAdd,handleClickRemove } = useFavoriteWithNav(searchElem);
-
   return (
     <div className="col s12 m12 l12" >
       <div className="card">
@@ -96,3 +100,15 @@ const View = ({ searchElem,searchItems,favoriteMeals,id,image,name,area,link,cat
     </div>
   );
 }
+
+View.propTypes = {
+  searchElem: shape({
+    id: PropTypes.number,
+    area: PropTypes.string,
+    category: PropTypes.string,
+    instruction: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    link: PropTypes.string,
+  })
+};
