@@ -59,7 +59,6 @@
         // "airbnb",
         // "plugin:jsx-a11y/recommended",
     ],
-    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
@@ -73,9 +72,6 @@
         "prettier"
     ],
     "rules": {
-        "restrictedNamedExports": [
-            "default"
-        ],
         "react/jsx-props-no-spreading": [
             0,
             {

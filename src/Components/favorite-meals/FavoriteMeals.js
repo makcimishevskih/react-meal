@@ -16,8 +16,7 @@ const FavoriteMeals = () => {
 
     const isPreloader = loader && !error ? <Preloader /> : null;
     const isError = !loader && error ? <div>Error</div> : null;
-    const a =
-        'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+
     return (
         <div className='row'>
             {isPreloader}
@@ -26,7 +25,7 @@ const FavoriteMeals = () => {
             {!!favoriteMeals.length && !loader && !error ? (
                 <>
                     <h4>Favorite meals</h4>
-                    <div>Click to image to get the instruction</div>
+                    <div>Click to the image to get the instruction</div>
                     {favoriteMeals.map((el) => (
                         <View
                             favoriteMeals={favoriteMeals}
@@ -67,10 +66,7 @@ const View = ({ id, name, category, image }) => {
                                 className='card-image'
                             >
                                 <MyLazyImage image={image} alt={category} />
-                                <span
-                                    className='card-title 
-                card-title_black'
-                                >
+                                <span className='card-title card-title_black'>
                                     {category}
                                 </span>
                             </motion.div>
@@ -78,7 +74,7 @@ const View = ({ id, name, category, image }) => {
                         <div
                             role='presentation'
                             onClick={handleClickRemove(id, true)}
-                            onKeyDown={() => console.log(123123)}
+                            // onKeyDown={() => console.log(123123)}
                             className='star-wrapper'
                         >
                             <i className='fa-solid fa-star star added' />

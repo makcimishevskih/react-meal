@@ -3,7 +3,6 @@
     margin-bottom: 40px;
 }
 
-
 .allCategories {
     display: flex;
     justify-content: center;
@@ -12,7 +11,6 @@
     margin: 50px auto;
     gap: 15px;
 }
-
 
 .mealCard {
     padding: 10px;
@@ -56,22 +54,5 @@
                 }
             }
         }
-    }
-}
-
-.router-link {
-    width: 200px;
-    margin: 5px;
-    padding: 5px;
-    border: 2px solid rgb(90, 255, 90);
-    color: black;
-    margin: 5px;
-    transition: color 0.1s ease-in-out;
-    &:hover {
-        color: gold;
-    }
-
-    &:focus {
-        border-color: #000000;
     }
 }
